@@ -1,8 +1,13 @@
-%p#notice= notice
-
-= image_tag @picture.image.url(:medium)
-%p= @picture.caption
-
-= link_to 'Edit', edit_picture_path(@picture)
-\|
-= link_to 'Back', pictures_path
+.col-md-6.col-md-offset-3
+	%p#notice= notice
+	.picture-show
+		.panel.panel-default
+			.panel-heading
+				= time_ago_in_words @picture.created_at
+			= image_tag @picture.image.url, class: 'image'
+			.panel-body
+				%p= @picture.caption
+			.panel-footer
+				= link_to 'Edit', edit_picture_path(@picture)
+				\|
+				= link_to 'Back', pictures_path

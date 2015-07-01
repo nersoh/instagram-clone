@@ -1,0 +1,12 @@
+%h1 Dashboard
+%h3 My Pictures
+
+%div.row
+	- current_user.pictures.each do |pic|
+		.col-md-4.col-xs-12
+			.image-box
+				.panel.panel-default
+					= link_to(pic) do
+						= image_tag pic.image.url(:medium)
+					.panel-body
+						= pic.caption

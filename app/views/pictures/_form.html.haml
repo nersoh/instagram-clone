@@ -1,13 +1,14 @@
+
 = form_for @picture do |f|
-  - if @picture.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@picture.errors.count, "error")} prohibited this picture from being saved:"
-      %ul
-        - @picture.errors.full_messages.each do |msg|
-          %li= msg
-  - if @picture.image?
-    = image_tag @picture.image.url(:medium)
-  = f.file_field :image
-  = f.text_field :caption
-  .actions
-    = f.submit 'Save', class: 'btn btn-default'
+	- if @picture.errors.any?
+		#error_explanation
+		%h2= "#{pluralize(@picture.errors.count, "error")} prohibited this picture from being saved:"
+		%ul
+			- @picture.errors.full_messages.each do |msg|
+				%li= msg
+	- if @picture.image?
+		= image_tag @picture.image.url(:medium)
+	= f.file_field :image, class: 'form-control'
+	= f.text_field :caption, class: 'form-control'
+	.actions
+		= f.submit 'Save', class: 'btn btn-default'
