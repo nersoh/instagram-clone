@@ -1,0 +1,4 @@
+= button_to(current_user.active_relationships.find_by(followed_id: user.id), method: :delete, form_class: 'inline-button', class: 'btn btn-danger btn-xs', remote: true) do
+					= hidden_field_tag :followed_id, user.id
+					%span.glyphicon.glyphicon-minus 
+					Unfollow
