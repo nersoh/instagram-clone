@@ -1,0 +1,12 @@
+.container
+	%h2= @page
+	- if @users.any?
+		%ul
+		- @users.each do |user|
+			%li
+				= link_to user.username, user
+	- else
+		%p 
+			No users 
+			\|
+			= link_to "Let's connect with people", users_path

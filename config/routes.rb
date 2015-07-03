@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
+  get 'users/index'
+
+  get 'users/show'
+
   get 'dashboard/index'
 
   devise_for :users
@@ -8,7 +16,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'dashboard#index'
 
-  resources :pictures
+  resources :pictures, except: [:index, :destroy]
+
+  resources :users, only: [:index, :show]
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships, only: [:create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

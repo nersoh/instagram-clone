@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap/variables";
 
 
 input, textarea, select, button {
@@ -20,6 +21,7 @@ input, textarea, select, button {
 		box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.45);
 		.image {
 			max-width: 100%;
+			width: 100%;
 		}
 		.panel-heading {
 
@@ -30,9 +32,14 @@ input, textarea, select, button {
 	}
 }
 
+.inline-button {
+	display: inline;
+}
+
 // DASHBOARD
-.image-box {
+.picture-box {
 	display: table;
+	float: left;
 	.panel {
 		padding: 0;
 		border-radius: 5px;
@@ -49,6 +56,20 @@ input, textarea, select, button {
 		}
 	}
 	img {
-		max-width: 100%;
+		//max-width: 100%;
+	}
+}
+
+@media(max-width: $screen-xs-max) {
+	.picture-box {
+		float: none;
+		margin: 5px auto;
+	}
+}
+
+// PROFILE
+.username-display {
+	font: {
+		size: 20px;
 	}
 }

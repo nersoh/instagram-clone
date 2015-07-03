@@ -1,0 +1,25 @@
+.container
+	%h1 Users#show
+
+	%div
+		%span.username-display= @user.username
+		- if @user.id == current_user.id
+			= link_to edit_user_registration_path, class: 'btn btn-default btn-sm inline-button' do
+				%span.glyphicon.glyphicon-pencil
+				Edit profile
+	%br
+	%span.badge= @user.pictures.count
+	Pictures
+	= link_to following_user_path(current_user) do
+		Following
+		%span{class: "badge"}= @user.following.count
+	= link_to followers_user_path(current_user) do
+		Followers
+		%span{class: "badge"}= @user.followers.count
+
+	%hr
+	- @user.pictures.each do |pic|
+		.picture-box
+			= link_to(pic) do
+				= image_tag pic.image.url(:small)
+

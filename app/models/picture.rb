@@ -1,7 +1,7 @@
 class Picture < ActiveRecord::Base
 	belongs_to :user
 
-	has_attached_file :image, styles: {:thumb => "100x100", :small => "200x200", :medium => "300x300"}
+	has_attached_file :image, styles: {:thumb => "100x100#", :small => "200x200#", :medium => "300x300#"}
 
 	validates_presence_of :image
 	validates :caption, presence: true, length: {maximum: 255}

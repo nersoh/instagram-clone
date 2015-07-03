@@ -1,13 +1,18 @@
-.col-md-6.col-md-offset-3
-	%p#notice= notice
+.col-md-8.col-md-offset-2
 	.picture-show
 		.panel.panel-default
-			.panel-heading
-				= time_ago_in_words @picture.created_at
+			.panel-heading.clearfix
+				.pull-left
+					- @user = @picture.user
+					- if @user.id == current_user.id
+						= @user.username
+					- else
+						= link_to @user.username, @user
+				.pull-right
+					= time_ago_in_words @picture.created_at
 			= image_tag @picture.image.url, class: 'image'
 			.panel-body
 				%p= @picture.caption
 			.panel-footer
-				= link_to 'Edit', edit_picture_path(@picture)
-				\|
-				= link_to 'Back', pictures_path
+				- if @user.id == current_user.id
+					= link_to 'Edit', edit_picture_path(@picture)

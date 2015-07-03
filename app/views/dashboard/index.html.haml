@@ -1,12 +1,13 @@
-%h1 Dashboard
-%h3 My Pictures
-
-%div.row
-	- current_user.pictures.each do |pic|
-		.col-md-4.col-xs-12
-			.image-box
-				.panel.panel-default
-					= link_to(pic) do
-						= image_tag pic.image.url(:medium)
-					.panel-body
-						= pic.caption
+.col-md-6.col-md-offset-3.col-xs-10.col-xs-offset-1
+	- current_user.feed.each do |picture|
+		.picture-show
+			.panel.panel-default
+				.panel-heading.clearfix
+					.pull-left
+						= link_to picture.user.username, picture.user
+					.pull-right
+						= time_ago_in_words picture.created_at
+				= image_tag picture.image.url, class: 'image'
+				.panel-body
+					%p= picture.caption
+				.panel-footer ...
