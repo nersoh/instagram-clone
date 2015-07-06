@@ -24,6 +24,14 @@ class PicturePolicy < ApplicationPolicy
 		user.id == record.user_id
 	end
 
+	def like?
+		user
+	end
+
+	def unlike?
+		like?
+	end
+
 
   class Scope < Scope
     def resolve

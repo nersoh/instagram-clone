@@ -10,4 +10,8 @@
 				= image_tag picture.image.url, class: 'image'
 				.panel-body
 					%p= picture.caption
-				.panel-footer ...
+				.panel-footer{id: "picture-stats-#{picture.id}"}
+					- if current_user.voted_for? picture
+						= render 'pictures/unlike_button', picture: picture
+					- else
+						= render 'pictures/like_button', picture: picture

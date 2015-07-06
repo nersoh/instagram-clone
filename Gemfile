@@ -5,6 +5,7 @@ gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'devise'
 gem 'pundit'
+gem 'acts_as_votable'
 
 group :test do
 	gem 'minitest-reporters'

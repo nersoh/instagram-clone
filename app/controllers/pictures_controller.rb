@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :set_picture, 
+    only: [:show, :edit, :update, :destroy, :like, :unlike]
   after_action :verify_authorized
 
   # GET /pictures
@@ -64,6 +65,20 @@ class PicturesController < ApplicationController
       flash[:success] = 'Picture was successfully destroyed.'
       format.html { redirect_to pictures_url }
       format.json { head :no_content }
+    end
+  end
+
+  def like
+    @picture.liked_by current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def unlike
+    @picture.unliked_by current_user
+    respond_to do |format|
+      format.js
     end
   end
 

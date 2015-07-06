@@ -1,0 +1,3 @@
+= button_to like_picture_path(picture), method: :put, class: "btn btn-default", remote: true do
+	%span.glyphicon.glyphicon-heart
+	%span{id: "likes-count-#{picture.id}"}= picture.get_likes.size

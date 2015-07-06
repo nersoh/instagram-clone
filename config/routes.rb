@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'dashboard#index'
 
-  resources :pictures, except: [:index, :destroy]
+  resources :pictures, except: [:index, :destroy] do
+    member do
+      put "like", to: "pictures#like"
+      delete "like", to: "pictures#unlike"
+    end
+  end
 
   resources :users, only: [:index, :show]
 

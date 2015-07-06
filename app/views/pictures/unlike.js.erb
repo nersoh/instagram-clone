@@ -1,0 +1,2 @@
+$("#picture-stats-<%= @picture.id %>")
+	.html("<%= escape_javascript(render('pictures/like_button', picture: @picture)) %>");

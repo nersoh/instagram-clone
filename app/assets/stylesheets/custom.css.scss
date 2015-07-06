@@ -60,6 +60,10 @@ input, textarea, select, button {
 	}
 }
 
+.liked {
+	color: red;
+}
+
 @media(max-width: $screen-xs-max) {
 	.picture-box {
 		float: none;
