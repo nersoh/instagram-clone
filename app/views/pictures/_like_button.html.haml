@@ -1,3 +1,12 @@
 = button_to like_picture_path(picture), method: :put, class: "btn btn-default", remote: true do
 	%span.glyphicon.glyphicon-heart
 	%span{id: "likes-count-#{picture.id}"}= picture.get_likes.size
+
+- if picture.get_likes.any?
+	%ul.list-inline
+		- voters = picture.get_likes.voters
+		- voters.each do |voter|
+			%li
+				= link_to voter.username, voter
+				= "," unless voter.eql? voters.last
+		liked this picture.
