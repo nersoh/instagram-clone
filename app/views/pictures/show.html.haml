@@ -13,6 +13,10 @@
 			= image_tag @picture.image.url, class: 'image'
 			.panel-body
 				%p= @picture.caption
+			- if @picture.comments.any?
+				= render 'comments/index', comments: @picture.comments
 			.panel-footer
-				- if @user.id == current_user.id
+				= render 'comments/new', picture: @picture
+			- if @user.id == current_user.id
+				.panel-footer
 					= link_to 'Edit', edit_picture_path(@picture)

@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
 	acts_as_votable
 	belongs_to :user
+	has_many :comments
 
 	has_attached_file :image, styles: {:thumb => "100x100#", :small => "200x200#", :medium => "300x300#"}
 
