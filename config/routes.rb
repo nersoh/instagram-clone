@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'relationships/create'
 
   get 'relationships/destroy'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     member do
       put "like", to: "pictures#like"
       delete "like", to: "pictures#unlike"
+      resources :comments
     end
   end
 

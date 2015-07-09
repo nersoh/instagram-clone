@@ -8,13 +8,16 @@ input, textarea, select, button {
 }
 
 .navbar-right {
-	li {
+	& > li {
 		&:hover {
 			box-shadow: 0 2px 0 #b2b2b2
 		}
 	}
 }
 .picture-show {
+	input, textarea, select, button {
+		margin-bottom: 0;
+	}
 	.panel {
 		padding: 0;
 		border-radius: 5px;
@@ -77,3 +80,5 @@ input, textarea, select, button {
 		size: 20px;
 	}
 }
+
+// COMMMENTS
